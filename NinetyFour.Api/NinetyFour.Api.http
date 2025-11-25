@@ -1,0 +1,6 @@
+@NinetyFour.Api_HostAddress = http://localhost:5147
+
+GET {{NinetyFour.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
