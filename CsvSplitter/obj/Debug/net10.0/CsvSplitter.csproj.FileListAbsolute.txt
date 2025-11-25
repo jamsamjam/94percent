@@ -1,0 +1,14 @@
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.deps.json
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.runtimeconfig.json
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.dll
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.pdb
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.AssemblyInfoInputs.cache
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.AssemblyInfo.cs
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.csproj.CoreCompileInputs.cache
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.dll
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/refint/CsvSplitter.dll
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.pdb
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.genruntimeconfig.cache
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/ref/CsvSplitter.dll
