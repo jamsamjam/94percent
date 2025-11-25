@@ -12,3 +12,6 @@
 /Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.pdb
 /Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.genruntimeconfig.cache
 /Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/ref/CsvSplitter.dll
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.csproj.AssemblyReference.cache
+/Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvHelper.dll
+/Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplit.C6FB48E6.Up2Date

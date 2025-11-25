@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0q5xbRrjD5Y=",
+  "dgSpecHash": "g4fV5VSQgzs=",
   "success": true,
   "projectFilePath": "/Users/sam/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/sam/.nuget/packages/csvhelper/33.1.0/csvhelper.33.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

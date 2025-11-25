@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef62f6885701b0800b6fb2bc23720d3c26886367")]
 [assembly: System.Reflection.AssemblyProductAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
