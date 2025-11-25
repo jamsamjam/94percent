@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gWLFocqxNz0=",
+  "dgSpecHash": "Tt2E4Caduuk=",
   "success": true,
-  "projectFilePath": "/Users/sam/Desktop/you/94percent/NinetyFour.Api/NinetyFour.Api.csproj",
+  "projectFilePath": "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj",
   "expectedPackageFiles": [
     "/Users/sam/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/sam/.nuget/packages/microsoft.aspnetcore.openapi/10.0.0/microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
