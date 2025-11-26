@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [savedName, setSavedName] = useState('Guest');
-  const [inputName, setInputName] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [savedName, setSavedName] = useState('Guest');
+  // const [inputName, setInputName] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(true);
 
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       <h1>94%</h1>
-      Hello, {savedName}! <br></br>
+      {/* Hello, {savedName}! <br></br>
 
       {!isSubmitted && (
         <>
@@ -70,30 +70,50 @@ function App() {
             OK
           </button>
         </>
-      )}
+      )} */}
 
       {isSubmitted && (
         <>
-          <div> Guess the most popular answers :) <br></br> </div>
-          <div style={{
-            height: '150px',
-            width: '550px',
-            borderColor: 'gray',
-            borderWidth: 'initial',
-            borderStyle: 'solid'
+          <div>Can you guess the most popular answers?<br></br></div>
+          <div style={{ 
+            textAlign: 'center',
+            margin: '50px auto',
+            maxWidth: '800px',
+            padding: '40px'
           }}>
-            {currentQuestion} <br></br>
+            <div style={{
+              fontSize: '80px',
+              color: '#D4A574',
+              marginBottom: '20px',
+              lineHeight: '0.5'
+            }}>
+              ❝
+            </div>
+            <div style={{
+              fontSize: '36px',
+              fontWeight: '350',
+              lineHeight: '1.6',
+              marginBottom: '30px'
+            }}>
+              {currentQuestion}
+            </div>
+          </div>
+          <div>
             <input name="myInput" onChange={e => setInputAnswer(e.target.value)}/> 
-            <button onClick={() => {
+            <button style={{
+              color: '#D4A574'
+            }} onClick={() => {
               sendAnswerToBackend()
             }}>
               Submit
             </button>
           </div>
+          
           <div> So far we've got: {correctAnswers
             .sort((a, b) => b.percentage - a.percentage)
             .map(obj =>
-              `${obj.answer} (${obj.percentage}%)`).join(', ')} </div>
+              `${obj.answer} (${obj.percentage}%)`).join(', ')}
+          </div>
           <div> Wrong answers: {wrongAnswers} </div>
         </>
       )}
