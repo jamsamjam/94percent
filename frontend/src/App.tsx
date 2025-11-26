@@ -8,7 +8,7 @@ function App() {
 
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
-  const [used, setUsed] = useState([]);
+  const [] = useState([]);
 
   const [inputAnswer, setInputAnswer] = useState('');
   const [correctAnswers, setCorrectAnswers] = useState<{ answer: string; percentage: number; }[]>([]);
