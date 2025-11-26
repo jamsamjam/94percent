@@ -17,7 +17,7 @@ public class QuestionsController : ControllerBase
 
     // GET api/questions/random
     [HttpGet("random")]
-    public async Task<ActionResult<Question>> GetRandomQuestion()
+    public async Task<ActionResult<Question>> GetRandomQuestion([FromQuery] List<int> exclude)
     {
         var question = await _context.Questions
             .OrderBy(q => EF.Functions.Random())
@@ -27,33 +27,6 @@ public class QuestionsController : ControllerBase
             return NotFound();
 
         return Ok(question);
-    }
-
-    // GET api/questions/{id}
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetQuestionById(int id)
-    {
-        var question = await _context.Questions.FindAsync(id);
-
-        if (question == null)
-            return NotFound();
-
-        return Ok(question);
-    }
-
-    // GET api/questions/{id}/answers
-    [HttpGet("{id}/answers")]
-    public async Task<IActionResult> GetAnswers(int id)
-    {
-        var answers = await _context.Answers
-            .Where(a => a.QuestionId == id)
-            .OrderByDescending(a => a.Percentage)
-            .ToListAsync();
-        
-        if (!answers.Any())
-            return NotFound();
-
-        return Ok(answers);
     }
 
     // POST api/questions/{id}/guess
