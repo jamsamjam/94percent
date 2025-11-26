@@ -4,11 +4,12 @@ import './App.css'
 function App() {
   // const [savedName, setSavedName] = useState('Guest');
   // const [inputName, setInputName] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(true);
+  const [isSubmitted] = useState(true);
 
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [used, setUsed] = useState([]);
+
   const [inputAnswer, setInputAnswer] = useState('');
   const [correctAnswers, setCorrectAnswers] = useState<{ answer: string; percentage: number; }[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
@@ -56,6 +57,7 @@ function App() {
   return (
     <>
       <h1>94%</h1>
+
       {/* Hello, {savedName}! <br></br>
 
       {!isSubmitted && (
@@ -79,7 +81,7 @@ function App() {
             textAlign: 'center',
             margin: '50px auto',
             maxWidth: '800px',
-            padding: '40px'
+            paddingTop: '40px'
           }}>
             <div style={{
               fontSize: '80px',
@@ -98,25 +100,42 @@ function App() {
               {currentQuestion}
             </div>
           </div>
-          <div>
-            <input name="myInput" onChange={e => setInputAnswer(e.target.value)}/> 
-            <button style={{
-              color: '#D4A574'
-            }} onClick={() => {
+          {correctAnswers.length > 0 && (
+            <div style={{ whiteSpace: 'pre-line' }} className="answer-bubble">
+              <div className="answer-bubble-text">
+                <br />
+                {correctAnswers
+                  .sort((a, b) => b.percentage - a.percentage)
+                  .map((obj, i) => (
+                    <div key={i}>{obj.answer} {obj.percentage}%</div>
+                  ))}              
+              </div>
+            </div>
+          )}
+          
+          <div style={{ marginTop: '40px' }}>
+            <input 
+              name="myInput" 
+              placeholder="Type your answer..."
+              onChange={e => setInputAnswer(e.target.value)}
+            /> 
+            <button onClick={() => {
               sendAnswerToBackend()
             }}>
               Submit
             </button>
           </div>
-          
-          <div> So far we've got: {correctAnswers
-            .sort((a, b) => b.percentage - a.percentage)
-            .map(obj =>
-              `${obj.answer} (${obj.percentage}%)`).join(', ')}
-          </div>
-          <div> Wrong answers: {wrongAnswers} </div>
+          <div style={{
+            paddingTop: '20px',
+            color: 'rgba(255, 255, 255, 0.4)',
+            fontSize: '14px'
+          }} > Wrong Answers: {wrongAnswers} </div>
         </>
       )}
+      
+      <footer className="footer">
+        <p>© 2025 Sam Lee</p>
+      </footer>
     </>
   )
 }

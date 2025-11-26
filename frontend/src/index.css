@@ -35,19 +35,39 @@ h1 {
   line-height: 1.1;
 }
 
+input[name="myInput"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(212, 165, 116, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  width: 300px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input[name="myInput"]::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 16px;
+  color: #D4A574;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  height: 45px;
+  margin-left: 10px;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #D4A574;
 }
 button:focus,
 button:focus-visible {
@@ -66,3 +86,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+.footer {
+  margin-top: 150px;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+.footer p {
+  margin: 0;
+}
