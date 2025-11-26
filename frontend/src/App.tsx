@@ -10,7 +10,6 @@ function App() {
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [used, setUsed] = useState([]);
   const [inputAnswer, setInputAnswer] = useState('');
-  const [savedAnswer, setSavedAnswer] = useState('');
   const [correctAnswers, setCorrectAnswers] = useState<string[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
 
@@ -39,9 +38,14 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         if (data.correct) {
-          setCorrectAnswers(prev => [...prev, `${inputAnswer} (${data.percentage}%)`]);
+          const alreadyFound = correctAnswers.some(a =>
+            a.toLowerCase().startsWith(inputAnswer.toLowerCase())
+          );
+
+          if (!alreadyFound) 
+            setCorrectAnswers(prev => [...prev, `${inputAnswer} (${data.percentage}%)`]);
         } else {
-          setWrongAnswers(prev => [...prev, inputAnswer]);
+          setWrongAnswers(prev => [...prev, ` ${inputAnswer}`]);
         }
       })
 
@@ -81,7 +85,6 @@ function App() {
             {currentQuestion} <br></br>
             <input name="myInput" onChange={e => setInputAnswer(e.target.value)}/> 
             <button onClick={() => {
-              setSavedAnswer(inputAnswer)
               sendAnswerToBackend()
             }}>
               Submit
