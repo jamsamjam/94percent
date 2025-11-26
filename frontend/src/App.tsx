@@ -10,7 +10,7 @@ function App() {
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [used, setUsed] = useState([]);
   const [inputAnswer, setInputAnswer] = useState('');
-  const [correctAnswers, setCorrectAnswers] = useState<string[]>([]);
+  const [correctAnswers, setCorrectAnswers] = useState<{ answer: string; percentage: number; }[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
 
   const fetchFromBackend = () =>
@@ -38,12 +38,12 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         if (data.correct) {
-          const alreadyFound = correctAnswers.some(a =>
-            a.toLowerCase().startsWith(inputAnswer.toLowerCase())
-          );
+          const alreadyFound = correctAnswers.some(obj => {
+            return obj.answer.toLowerCase() === inputAnswer.toLowerCase();
+          });
 
           if (!alreadyFound) 
-            setCorrectAnswers(prev => [...prev, `${inputAnswer} (${data.percentage}%)`]);
+            setCorrectAnswers(prev => [...prev, {answer: inputAnswer, percentage: data.percentage}]);
         } else {
           setWrongAnswers(prev => [...prev, ` ${inputAnswer}`]);
         }
@@ -90,7 +90,10 @@ function App() {
               Submit
             </button>
           </div>
-          <div> So far we've got: {correctAnswers} </div>
+          <div> So far we've got: {correctAnswers
+            .sort((a, b) => b.percentage - a.percentage)
+            .map(obj =>
+              `${obj.answer} (${obj.percentage}%)`).join(', ')} </div>
           <div> Wrong answers: {wrongAnswers} </div>
         </>
       )}
