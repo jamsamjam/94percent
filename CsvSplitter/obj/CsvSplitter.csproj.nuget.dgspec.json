@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sam/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj": {}
+    "/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj": {}
   },
   "projects": {
-    "/Users/sam/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj": {
+    "/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sam/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj",
+        "projectUniqueName": "/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj",
         "projectName": "CsvSplitter",
-        "projectPath": "/Users/sam/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj",
+        "projectPath": "/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/CsvSplitter.csproj",
         "packagesPath": "/Users/sam/.nuget/packages/",
-        "outputPath": "/Users/sam/Desktop/you/94percent/CsvSplitter/obj/",
+        "outputPath": "/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sam/.nuget/NuGet/NuGet.Config"

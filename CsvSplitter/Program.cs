@@ -11,9 +11,9 @@ class Program
 {
     static void Main()
     {
-        var inputPath = "../NinetyFour.Api/Data/raw.csv";
-        var questionsPath = "../NinetyFour.Api/Data/questions.csv";
-        var answersPath = "../NinetyFour.Api/Data/answers.csv";
+        var inputPath = "../data/raw.csv";
+        var questionsPath = "../data/Questions.csv";
+        var answersPath = "../data/Answers.csv";
 
         using var reader = new StreamReader(inputPath);
 
@@ -31,8 +31,8 @@ class Program
         using var qWriter = new StreamWriter(questionsPath);
         using var aWriter = new StreamWriter(answersPath);
 
-        qWriter.WriteLine("id,question");
-        aWriter.WriteLine("question_id,answer,percentage");
+        qWriter.WriteLine("Id,Text");
+        aWriter.WriteLine("QuestionId,AnswerText,Percentage");
 
         int questionId = 1;
 

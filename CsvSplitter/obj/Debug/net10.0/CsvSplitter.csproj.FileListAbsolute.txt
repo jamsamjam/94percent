@@ -15,3 +15,21 @@
 /Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.csproj.AssemblyReference.cache
 /Users/sam/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvHelper.dll
 /Users/sam/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplit.C6FB48E6.Up2Date
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.deps.json
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.runtimeconfig.json
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.dll
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvSplitter.pdb
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/bin/Debug/net10.0/CsvHelper.dll
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.csproj.AssemblyReference.cache
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.AssemblyInfoInputs.cache
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.AssemblyInfo.cs
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.csproj.CoreCompileInputs.cache
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.sourcelink.json
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplit.C6FB48E6.Up2Date
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.dll
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/refint/CsvSplitter.dll
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.pdb
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/CsvSplitter.genruntimeconfig.cache
+/Users/sam/Library/Mobile Documents/com~apple~CloudDocs/Desktop/you/94percent/CsvSplitter/obj/Debug/net10.0/ref/CsvSplitter.dll
