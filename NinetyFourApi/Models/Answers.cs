@@ -6,6 +6,4 @@ public class Answer
     public int QuestionId { get; set; }
     public string AnswerText { get; set; }
     public int Percentage { get; set; }
-
-    public Question Question { get; set; }
 }
