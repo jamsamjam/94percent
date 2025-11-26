@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1e949a2a241048901386674f78dcacf994eae6b")]
+=======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+747683f081d4cdea483bbd7910f69784a00ea847")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CsvSplitter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
