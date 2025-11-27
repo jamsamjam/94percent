@@ -111,42 +111,42 @@ function App() {
               {currentQuestion}
             </div>
           </div>
-          {correctAnswers.length > 0 && (
-            <div style={{ whiteSpace: 'pre-line' }} className="answer-bubble">
-              <div className="answer-bubble-text">
-                <br />
-                {correctAnswers
-                  .sort((a, b) => b.percentage - a.percentage)
-                  .map((obj, i) => (
-                    <div key={i}>{obj.answer} {obj.percentage}%</div>
-                  ))}              
-              </div>
-            </div>
-          )}
 
           {!hasGivenUp && (
-            <div style={{ marginTop: '40px' }}>
-              <input 
-                name="myInput" 
-                placeholder="Type your answer..."
-                value={inputAnswer}
-                onChange={e => setInputAnswer(e.target.value)}
-                className={isShaking ? 'shake' : ''}
-              /> 
-              <button onClick={() => {
-                sendAnswerToBackend()
-                setInputAnswer('')
-              }}>
-                Submit
-              </button>
-            </div>
+            <>
+              {correctAnswers.length > 0 && (
+                <div style={{ whiteSpace: 'pre-line' }} className="answer-bubble">
+                  <div className="answer-bubble-text">
+                    {correctAnswers
+                      .sort((a, b) => b.percentage - a.percentage)
+                      .map((obj, i) => (
+                        <div key={i}>{obj.answer} {obj.percentage}%</div>
+                      ))}              
+                  </div>
+                </div>
+              )}
+              <div style={{ marginTop: '40px' }}>
+                <input 
+                  name="myInput" 
+                  placeholder="Type your answer..."
+                  value={inputAnswer}
+                  onChange={e => setInputAnswer(e.target.value)}
+                  className={isShaking ? 'shake' : ''}
+                /> 
+                <button onClick={() => {
+                  sendAnswerToBackend()
+                  setInputAnswer('')
+                }}>
+                  Submit
+                </button>
+              </div>
+            </>
           )}
 
           {hasGivenUp && (
             <>
               <div style={{ whiteSpace: 'pre-line' }} className="answer-bubble">
                 <div className="answer-bubble-text">
-                  <br />
                   {correctAnswers
                     .sort((a, b) => b.percentage - a.percentage)
                     .map((obj, i) => (
