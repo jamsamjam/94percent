@@ -2,6 +2,8 @@ using Google.GenAI;
 using Google.GenAI.Types;
 using Microsoft.AspNetCore.Mvc;
 
+namespace NinetyFourApi.Controllers;
+
 [Route("api/gemini")]
 [ApiController]
 public class GeminiController : ControllerBase
