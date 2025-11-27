@@ -31,6 +31,8 @@ public class QuestionsController : ControllerBase
         if (question == null)
             return NotFound();
 
+        _logger.LogInformation("New question loaded: {QuestionId}", question.Id);
+
         return Ok(question);
     }
 
