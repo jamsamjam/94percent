@@ -55,7 +55,8 @@ public class QuestionsController : ControllerBase
         {
             return Ok(new {
                 correct = true,
-                percentage = exact.Percentage
+                percentage = exact.Percentage,
+                answer = exact.AnswerText
             });
         }
 
@@ -79,7 +80,8 @@ public class QuestionsController : ControllerBase
             {
                 return Ok(new {
                     correct = true,
-                    percentage = answer.Percentage
+                    percentage = answer.Percentage,
+                    answer = answer.AnswerText
                 });
             }
         }
@@ -113,7 +115,7 @@ Do not include anything else.
 """;
 
         var response = await client.Models.GenerateContentAsync(
-            model: "gemini-2.5-flash",
+            model: "gemini-2.0-flash",
             contents: prompt
         );
 

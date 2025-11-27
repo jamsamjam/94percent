@@ -40,11 +40,11 @@ function App() {
       .then((data) => {
         if (data.correct) {
           const alreadyFound = correctAnswers.some(obj => {
-            return obj.answer.toLowerCase() === inputAnswer.toLowerCase();
+            return obj.answer.toLowerCase() === data.answer.toLowerCase();
           });
 
           if (!alreadyFound) 
-            setCorrectAnswers(prev => [...prev, {answer: inputAnswer, percentage: data.percentage}]);
+            setCorrectAnswers(prev => [...prev, {answer: data.answer, percentage: data.percentage}]);
         } else {
           setWrongAnswers(prev => [...prev, ` ${inputAnswer}`]);
         }
