@@ -71,8 +71,8 @@ public class QuestionsController : ControllerBase
             return StatusCode(503, new { error = "Gemini API is not configured" });
         }
 
-        _logger.LogInformation("Calling Gemini API for question {question.id}, {userAnswer}", 
-            question.Id, userAnswer);
+        _logger.LogInformation("Calling Gemini API for question {questionId}: {questionText}, {userAnswer}", 
+            question.Id, question.Text, userAnswer);
 
         var matchedAnswer = await CheckBatchSimilarity(
             client,

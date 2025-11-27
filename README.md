@@ -1,2 +1,4 @@
 - [ ] add caching
 - [ ] exclude seen questions
+- [ ] enter to submit
+- [ ] animation when completed

@@ -47,7 +47,7 @@ function App() {
           if (!alreadyFound) 
             setCorrectAnswers(prev => [...prev, {answer: data.answer, percentage: data.percentage}]);
         } else {
-          setWrongAnswers(prev => [...prev, `, ${inputAnswer}`]);
+          setWrongAnswers(prev => [...prev, inputAnswer]);
           setIsShaking(true);
           setTimeout(() => setIsShaking(false), 500);
         }
@@ -135,7 +135,7 @@ function App() {
             paddingTop: '20px',
             color: 'rgba(255, 255, 255, 0.4)',
             fontSize: '14px'
-          }} > Wrong Answers: {wrongAnswers} </div>
+          }} > Wrong Answers: {wrongAnswers.join(", ")} </div>
         </>
       )}
       
