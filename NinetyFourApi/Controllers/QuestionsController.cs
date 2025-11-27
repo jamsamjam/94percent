@@ -1,3 +1,4 @@
+using Google.GenAI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NinetyFourApi.Models;
@@ -9,10 +10,12 @@ namespace NinetyFourApi.Controllers;
 public class QuestionsController : ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly IServiceProvider _serviceProvider;
 
-    public QuestionsController(AppDbContext context)
+    public QuestionsController(AppDbContext context, IServiceProvider serviceProvider)
     {
         _context = context;
+        _serviceProvider = serviceProvider;
     }
 
     // GET api/questions/random
@@ -34,28 +37,51 @@ public class QuestionsController : ControllerBase
     public async Task<IActionResult> CheckAnswer(int id, [FromBody] GuessRequest request)
     {
         var question = await _context.Questions.FindAsync(id);
-        if (question == null)
-            return NotFound();
+        if (question == null) return NotFound();
 
         var answers = await _context.Answers
             .Where(a => a.QuestionId == id)
             .ToListAsync();
 
-        if (!answers.Any())
-            return NotFound();
+        if (!answers.Any()) return NotFound();
 
-        var input = Normalize(request.Input);
+        var userAnswer = request.Input.Trim();
 
-        var match = answers.FirstOrDefault(a =>
-            Normalize(a.AnswerText) == input
+        var exact = answers.FirstOrDefault(a =>
+            a.AnswerText.Trim().ToLower() == userAnswer.ToLower()
         );
 
-        if (match != null)
+        if (exact != null)
         {
             return Ok(new {
                 correct = true,
-                percentage = match.Percentage
+                percentage = exact.Percentage
             });
+        }
+
+        var client = _serviceProvider.GetService<Client>();
+        
+        if (client == null)
+        {
+            return StatusCode(503, new { error = "Gemini API is not configured" });
+        }
+
+        foreach (var answer in answers)
+        {
+            bool isSimilar = await CheckSimilarity(
+                client,
+                question.Text,
+                answer.AnswerText,
+                userAnswer
+            );
+
+            if (isSimilar)
+            {
+                return Ok(new {
+                    correct = true,
+                    percentage = answer.Percentage
+                });
+            }
         }
 
         return Ok(new {
@@ -63,8 +89,36 @@ public class QuestionsController : ControllerBase
         });
     }
 
-    private string Normalize(string s)
+    private async Task<bool> CheckSimilarity(
+        Client client,
+        string questionText,
+        string correctAnswer,
+        string userAnswer)    
     {
-        return s.Trim().ToLower();
+        var prompt = $"""
+You are checking if the user's answer should be accepted as correct for a 94% quiz question.
+
+Question:
+"{questionText}"
+
+Correct answer candidate:
+"{correctAnswer}"
+
+User answer:
+"{userAnswer}"
+
+Decide if the user's answer means the same thing as the correct answer *in the context of the question*.
+Respond with exactly one word: "true" or "false".
+Do not include anything else.
+""";
+
+        var response = await client.Models.GenerateContentAsync(
+            model: "gemini-2.5-flash",
+            contents: prompt
+        );
+
+        var resultText = response.Candidates[0].Content.Parts[0].Text.Trim().ToLower();
+
+        return resultText == "true";
     }
 }
