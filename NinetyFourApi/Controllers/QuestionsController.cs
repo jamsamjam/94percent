@@ -11,11 +11,13 @@ public class QuestionsController : ControllerBase
 {
     private readonly AppDbContext _context;
     private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<QuestionsController> _logger;
 
-    public QuestionsController(AppDbContext context, IServiceProvider serviceProvider)
+    public QuestionsController(AppDbContext context, IServiceProvider serviceProvider, ILogger<QuestionsController> logger)
     {
         _context = context;
         _serviceProvider = serviceProvider;
+        _logger = logger;
     }
 
     // GET api/questions/random
@@ -66,6 +68,9 @@ public class QuestionsController : ControllerBase
         {
             return StatusCode(503, new { error = "Gemini API is not configured" });
         }
+
+        _logger.LogInformation("Calling Gemini API for question {question.id}, {userAnswer}", 
+            question.Id, userAnswer);
 
         var matchedAnswer = await CheckBatchSimilarity(
             client,
