@@ -117,10 +117,12 @@ function App() {
             <input 
               name="myInput" 
               placeholder="Type your answer..."
+              value={inputAnswer}
               onChange={e => setInputAnswer(e.target.value)}
             /> 
             <button onClick={() => {
               sendAnswerToBackend()
+              setInputAnswer('')
             }}>
               Submit
             </button>
