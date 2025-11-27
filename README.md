@@ -1,10 +1,11 @@
-# 94%
+${\color{Tan}\Huge{\textsf{94percent}}}$
+---
 
 A web game where players try to guess the most common answers, inspired by the 94% quiz.
 
 ![Screenshot of the main page](images/screenshot.png)
 
-## Thanks To
+## Thanks to
 
 Answered my TypeScript questions and gave me lots of motivation and encouragement to try things on my own
 ⸺ [Simon Lefort](https://github.com/Androz2091)
