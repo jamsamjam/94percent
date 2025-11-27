@@ -2780,19 +2780,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/sam/.nuget/packages/": {}
+    "/home/debian/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj",
+      "projectUniqueName": "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj",
       "projectName": "NinetyFourApi",
-      "projectPath": "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj",
-      "packagesPath": "/Users/sam/.nuget/packages/",
-      "outputPath": "/Users/sam/Desktop/you/94percent/NinetyFourApi/obj/",
+      "projectPath": "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj",
+      "packagesPath": "/home/debian/.nuget/packages/",
+      "outputPath": "/home/debian/94percent/NinetyFourApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sam/.nuget/NuGet/NuGet.Config"
+        "/home/debian/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -2860,7 +2860,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
