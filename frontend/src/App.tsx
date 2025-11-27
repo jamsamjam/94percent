@@ -171,12 +171,13 @@ function App() {
             color: 'rgba(255, 255, 255, 0.4)',
             fontSize: '14px'
           }} > Wrong Answers: {wrongAnswers.join(", ")} </div>
-          <button className="text-button" onClick={() => {
+          {!hasGivenUp && (<button className="text-button" onClick={() => {
             setHasGivenUp(true)
             revealAnswers()
           }}>
             I give up
           </button>
+          )}
         </>
       )}
       
