@@ -33,12 +33,15 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(connectionString));
 
-builder.Services.AddSingleton<Client>(sp =>
+var geminiApiKey = builder.Configuration["Gemini:ApiKey"];
+if (!string.IsNullOrEmpty(geminiApiKey))
 {
-    var config = sp.GetRequiredService<IConfiguration>();
-    var apiKey = config["Gemini:ApiKey"];
-    return new Client(apiKey: apiKey);
-});
+    builder.Services.AddSingleton<Client>(sp => new Client(apiKey: geminiApiKey));
+}
+else
+{
+    Console.WriteLine("Warning: Gemini API Key not configured. Gemini endpoints will not work.");
+}
 
 var app = builder.Build();
 

@@ -1,6 +1,7 @@
 using Google.GenAI;
 using Google.GenAI.Types;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace NinetyFourApi.Controllers;
 
@@ -8,17 +9,24 @@ namespace NinetyFourApi.Controllers;
 [ApiController]
 public class GeminiController : ControllerBase
 {
-    private readonly Client _client;
+    private readonly IServiceProvider _serviceProvider;
 
-    public GeminiController(Client client)
+    public GeminiController(IServiceProvider serviceProvider)
     {
-        _client = client;
+        _serviceProvider = serviceProvider;
     }
 
     [HttpGet("test")]
     public async Task<IActionResult> Test()
     {
-        var response = await _client.Models.GenerateContentAsync(
+        var client = _serviceProvider.GetService<Client>();
+        
+        if (client == null)
+        {
+            return StatusCode(503, new { error = "Gemini API is not configured" });
+        }
+
+        var response = await client.Models.GenerateContentAsync(
             model: "gemini-2.5-flash",
             contents: "say hi in one sentence"
         );
