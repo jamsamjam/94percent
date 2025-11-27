@@ -128,7 +128,6 @@ function App() {
               <div style={{ marginTop: '40px' }}>
                 <input 
                   name="myInput" 
-                  placeholder="Type your answer..."
                   value={inputAnswer}
                   onChange={e => setInputAnswer(e.target.value)}
                   className={isShaking ? 'shake' : ''}
