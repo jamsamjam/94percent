@@ -15,7 +15,7 @@ function App() {
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
 
   const fetchFromBackend = () =>
-    fetch('http://localhost:5147/api/questions/random')
+    fetch('/api/questions/random')
       .then((res) => {
         console.log(res);
         return res;
@@ -27,7 +27,7 @@ function App() {
       })
 
   const sendAnswerToBackend = () =>
-    fetch(`http://localhost:5147/api/questions/${currentQuestionId}/guess`, {
+    fetch(`/api/questions/${currentQuestionId}/guess`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
