@@ -13,6 +13,7 @@ function App() {
   const [inputAnswer, setInputAnswer] = useState('');
   const [correctAnswers, setCorrectAnswers] = useState<{ answer: string; percentage: number; }[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
+  const [isShaking, setIsShaking] = useState(false);
 
   const fetchFromBackend = () =>
     fetch('/api/questions/random')
@@ -46,7 +47,9 @@ function App() {
           if (!alreadyFound) 
             setCorrectAnswers(prev => [...prev, {answer: data.answer, percentage: data.percentage}]);
         } else {
-          setWrongAnswers(prev => [...prev, ` ${inputAnswer}`]);
+          setWrongAnswers(prev => [...prev, `, ${inputAnswer}`]);
+          setIsShaking(true);
+          setTimeout(() => setIsShaking(false), 500);
         }
       })
 
@@ -119,6 +122,7 @@ function App() {
               placeholder="Type your answer..."
               value={inputAnswer}
               onChange={e => setInputAnswer(e.target.value)}
+              className={isShaking ? 'shake' : ''}
             /> 
             <button onClick={() => {
               sendAnswerToBackend()
