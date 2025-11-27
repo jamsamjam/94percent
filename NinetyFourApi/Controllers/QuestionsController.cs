@@ -36,6 +36,25 @@ public class QuestionsController : ControllerBase
         return Ok(question);
     }
 
+    // GET api/questions/{id}/answers
+    [HttpGet("{id}/answers")]
+    public async Task<IActionResult> GetAnswers(int id)
+    {
+        var question = await _context.Questions.FindAsync(id);
+        if (question == null) return NotFound();
+
+        var answers = await _context.Answers
+            .Where(a => a.QuestionId == id)
+            .OrderByDescending(a => a.Percentage)
+            .Select(a => new {
+                answer = a.AnswerText,
+                percentage = a.Percentage
+            })
+            .ToListAsync();
+
+        return Ok(new { answers });
+    }
+
     // POST api/questions/{id}/guess
     [HttpPost("{id}/guess")]
     public async Task<IActionResult> CheckAnswer(int id, [FromBody] GuessRequest request)

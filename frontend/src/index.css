@@ -74,6 +74,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.text-button {
+  all: unset;
+  padding-top: 5px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.29);
+  font-size: 14px;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

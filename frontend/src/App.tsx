@@ -8,7 +8,8 @@ function App() {
 
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
-  const [] = useState([]);
+  // const [] = useState([]); TODO: seen questions
+  const [hasGivenUp, setHasGivenUp] = useState(false);
 
   const [inputAnswer, setInputAnswer] = useState('');
   const [correctAnswers, setCorrectAnswers] = useState<{ answer: string; percentage: number; }[]>([]);
@@ -52,6 +53,13 @@ function App() {
           setTimeout(() => setIsShaking(false), 500);
         }
       })
+
+  const revealAnswers = () =>
+    fetch(`/api/questions/${currentQuestionId}/answers`)
+      .then(res => res.json())
+      .then(data => {
+        setCorrectAnswers(data.answers);
+      });
 
   useEffect(()=>{
     fetchFromBackend()
@@ -115,27 +123,60 @@ function App() {
               </div>
             </div>
           )}
-          
-          <div style={{ marginTop: '40px' }}>
-            <input 
-              name="myInput" 
-              placeholder="Type your answer..."
-              value={inputAnswer}
-              onChange={e => setInputAnswer(e.target.value)}
-              className={isShaking ? 'shake' : ''}
-            /> 
-            <button onClick={() => {
-              sendAnswerToBackend()
-              setInputAnswer('')
-            }}>
-              Submit
-            </button>
-          </div>
+
+          {!hasGivenUp && (
+            <div style={{ marginTop: '40px' }}>
+              <input 
+                name="myInput" 
+                placeholder="Type your answer..."
+                value={inputAnswer}
+                onChange={e => setInputAnswer(e.target.value)}
+                className={isShaking ? 'shake' : ''}
+              /> 
+              <button onClick={() => {
+                sendAnswerToBackend()
+                setInputAnswer('')
+              }}>
+                Submit
+              </button>
+            </div>
+          )}
+
+          {hasGivenUp && (
+            <>
+              <div style={{ whiteSpace: 'pre-line' }} className="answer-bubble">
+                <div className="answer-bubble-text">
+                  <br />
+                  {correctAnswers
+                    .sort((a, b) => b.percentage - a.percentage)
+                    .map((obj, i) => (
+                      <div key={i}>{obj.answer} {obj.percentage}%</div>
+                    ))}              
+                </div>
+              </div>
+              <button onClick={() => {
+                setHasGivenUp(true);
+                setCorrectAnswers([]);
+                setWrongAnswers([]);
+                setInputAnswer('');
+                fetchFromBackend();
+              }}>
+                Next Question
+              </button>
+            </>
+          )}
+
           <div style={{
             paddingTop: '20px',
             color: 'rgba(255, 255, 255, 0.4)',
             fontSize: '14px'
           }} > Wrong Answers: {wrongAnswers.join(", ")} </div>
+          <button className="text-button" onClick={() => {
+            setHasGivenUp(true)
+            revealAnswers()
+          }}>
+            I give up
+          </button>
         </>
       )}
       
