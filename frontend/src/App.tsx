@@ -181,7 +181,7 @@ function App() {
       )}
       
       <footer className="footer">
-        <p>© 2025 Sam Lee</p>
+        <p>© 2025 <a style={{ color: 'rgba(255, 255, 255, 0.5)' }} href="https://github.com/jamsamjam/94percent">Sam Lee</a></p>
       </footer>
     </>
   )
