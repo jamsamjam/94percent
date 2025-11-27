@@ -48,7 +48,7 @@ public class QuestionsController : ControllerBase
         var userAnswer = request.Input.Trim();
 
         var exact = answers.FirstOrDefault(a =>
-            a.AnswerText.Trim().ToLower() == userAnswer.ToLower()
+            a.AnswerText.Trim().ToLower() == userAnswer.Trim().ToLower()
         );
 
         if (exact != null)
@@ -67,23 +67,20 @@ public class QuestionsController : ControllerBase
             return StatusCode(503, new { error = "Gemini API is not configured" });
         }
 
-        foreach (var answer in answers)
-        {
-            bool isSimilar = await CheckSimilarity(
-                client,
-                question.Text,
-                answer.AnswerText,
-                userAnswer
-            );
+        var matchedAnswer = await CheckBatchSimilarity(
+            client,
+            question.Text,
+            answers,
+            userAnswer
+        );
 
-            if (isSimilar)
-            {
-                return Ok(new {
-                    correct = true,
-                    percentage = answer.Percentage,
-                    answer = answer.AnswerText
-                });
-            }
+        if (matchedAnswer != null)
+        {
+            return Ok(new {
+                correct = true,
+                percentage = matchedAnswer.Percentage,
+                answer = matchedAnswer.AnswerText
+            });
         }
 
         return Ok(new {
@@ -91,27 +88,31 @@ public class QuestionsController : ControllerBase
         });
     }
 
-    private async Task<bool> CheckSimilarity(
+    private async Task<Answer?> CheckBatchSimilarity(
         Client client,
         string questionText,
-        string correctAnswer,
+        List<Answer> answerCandidates,
         string userAnswer)    
     {
+        var candidatesList = string.Join("\n", 
+            answerCandidates.Select((a, i) => $"{i + 1}. {a.AnswerText}")
+        );
+
         var prompt = $"""
 You are checking if the user's answer should be accepted as correct for a 94% quiz question.
 
 Question:
 "{questionText}"
 
-Correct answer candidate:
-"{correctAnswer}"
-
 User answer:
 "{userAnswer}"
 
-Decide if the user's answer means the same thing as the correct answer *in the context of the question*.
-Respond with exactly one word: "true" or "false".
-Do not include anything else.
+Answer candidates:
+{candidatesList}
+
+Decide which answer candidate (if any) means the same thing as the user's answer *in the context of the question*.
+Respond with ONLY the number (1-{answerCandidates.Count}) of the matching answer, or "0" if none match.
+Do not include anything else - just the number.
 """;
 
         var response = await client.Models.GenerateContentAsync(
@@ -119,8 +120,13 @@ Do not include anything else.
             contents: prompt
         );
 
-        var resultText = response.Candidates[0].Content.Parts[0].Text.Trim().ToLower();
+        var resultText = response.Candidates[0].Content.Parts[0].Text.Trim();
+        
+        if (int.TryParse(resultText, out int matchIndex) && matchIndex > 0 && matchIndex <= answerCandidates.Count)
+        {
+            return answerCandidates[matchIndex - 1];
+        }
 
-        return resultText == "true";
+        return null;
     }
 }
