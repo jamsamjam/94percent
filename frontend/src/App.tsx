@@ -155,7 +155,7 @@ function App() {
                 </div>
               </div>
               <button onClick={() => {
-                setHasGivenUp(true);
+                setHasGivenUp(false);
                 setCorrectAnswers([]);
                 setWrongAnswers([]);
                 setInputAnswer('');
