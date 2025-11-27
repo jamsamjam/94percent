@@ -8,12 +8,17 @@ namespace NinetyFourApi.Controllers;
 [ApiController]
 public class GeminiController : ControllerBase
 {
+    private readonly Client _client;
+
+    public GeminiController(Client client)
+    {
+        _client = client;
+    }
+
     [HttpGet("test")]
     public async Task<IActionResult> Test()
     {
-        var client = new Client();
-
-        var response = await client.Models.GenerateContentAsync(
+        var response = await _client.Models.GenerateContentAsync(
             model: "gemini-2.5-flash",
             contents: "say hi in one sentence"
         );
