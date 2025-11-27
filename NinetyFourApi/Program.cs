@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NinetyFourApi.Models;
+using Google.GenAI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,13 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(connectionString));
+
+builder.Services.AddSingleton<Client>(sp =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    var apiKey = config["Gemini:ApiKey"];
+    return new Client(apiKey: apiKey);
+});
 
 var app = builder.Build();
 

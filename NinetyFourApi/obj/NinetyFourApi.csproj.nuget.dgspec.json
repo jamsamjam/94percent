@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj": {}
+    "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj": {}
   },
   "projects": {
-    "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj": {
+    "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj",
+        "projectUniqueName": "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj",
         "projectName": "NinetyFourApi",
-        "projectPath": "/home/debian/94percent/NinetyFourApi/NinetyFourApi.csproj",
-        "packagesPath": "/home/debian/.nuget/packages/",
-        "outputPath": "/home/debian/94percent/NinetyFourApi/obj/",
+        "projectPath": "/Users/sam/Desktop/you/94percent/NinetyFourApi/NinetyFourApi.csproj",
+        "packagesPath": "/Users/sam/.nuget/packages/",
+        "outputPath": "/Users/sam/Desktop/you/94percent/NinetyFourApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/debian/.nuget/NuGet/NuGet.Config"
+          "/Users/sam/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -44,6 +44,10 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
+            "Google.GenAI": {
+              "target": "Package",
+              "version": "[0.6.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.0, )"
@@ -82,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
