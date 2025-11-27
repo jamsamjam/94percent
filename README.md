@@ -1,0 +1,2 @@
+- [ ] add caching
+- [ ] exclude seen questions
