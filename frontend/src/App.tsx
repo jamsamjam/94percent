@@ -178,6 +178,11 @@ function App() {
             fontSize: '14px'
           }} > Wrong Answers: {wrongAnswers.join(", ")} </div>
           {!hasGivenUp && (<button className="text-button" onClick={() => {
+            if (wrongAnswers.length < 4) {
+              alert("Is that all you've got? Try a bit more.");
+              return;
+            }
+
             setHasGivenUp(true)
             revealAnswers()
           }}>
