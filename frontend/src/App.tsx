@@ -54,6 +54,11 @@ function App() {
         }
       })
 
+  const handleSubmit = () => {
+    sendAnswerToBackend();
+    setInputAnswer('');
+  }
+
   const revealAnswers = () =>
     fetch(`/api/questions/${currentQuestionId}/answers`)
       .then(res => res.json())
@@ -130,12 +135,14 @@ function App() {
                   name="myInput" 
                   value={inputAnswer}
                   onChange={e => setInputAnswer(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') {
+                      handleSubmit();
+                    }
+                  }}
                   className={isShaking ? 'shake' : ''}
                 /> 
-                <button onClick={() => {
-                  sendAnswerToBackend()
-                  setInputAnswer('')
-                }}>
+                <button onClick={handleSubmit}>
                   Submit
                 </button>
               </div>

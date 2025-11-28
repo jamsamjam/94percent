@@ -22,5 +22,4 @@ Tried it out and threw in a bunch of cool ideas to improve the game
 
 - add db caching
 - exclude seen questions
-- enter to submit
 - animation when completed
