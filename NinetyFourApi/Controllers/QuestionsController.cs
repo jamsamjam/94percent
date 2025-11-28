@@ -31,7 +31,7 @@ public class QuestionsController : ControllerBase
         if (question == null)
             return NotFound();
 
-        _logger.LogInformation("New question loaded: {QuestionId}", question.Id);
+        _logger.LogInformation("New question loaded: {QuestionId}: {QuestionText}", question.Id, question.Text);
 
         return Ok(question);
     }
@@ -90,7 +90,7 @@ public class QuestionsController : ControllerBase
             return StatusCode(503, new { error = "Gemini API is not configured" });
         }
 
-        _logger.LogInformation("Calling Gemini API for question {questionId}: {questionText}, {userAnswer}", 
+        _logger.LogInformation("Calling Gemini API for question {questionId}: {questionText}, with user answer '{userAnswer}'", 
             question.Id, question.Text, userAnswer);
 
         var matchedAnswer = await CheckBatchSimilarity(
