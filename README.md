@@ -15,7 +15,7 @@ Tried it out and threw in a bunch of cool ideas to improve the game
 
 ## Tech Stack
 
-- **Backend**: C# (.NET 10), ASP.NET Core Web API, EF Core
+- **Backend**: C# (.NET 10), ASP.NET Core Web API, EF Core, PostgreSQL
 - **Frontend**: React + Vite
 
 ## Todo
